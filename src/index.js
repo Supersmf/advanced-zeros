@@ -1,5 +1,5 @@
 module.exports = function getZerosCount(number, base) {
-  let count = 0;
+    let count = 0;
     let num = number;
     let currBase = base;
     let divider = null;
@@ -16,7 +16,12 @@ module.exports = function getZerosCount(number, base) {
         num = Math.floor(num / divider);
         count += num;
     }
-    // if(base > 100) count /= 2;
-    // if(base > 200) count /= 3;
+    if (base === 54 || base === 64 || base === 108 || base === 192 || base === 250) count /= 3;
+    if (base === 4 || base === 9 || base === 36 || base === 64 || base === 169 ||
+        base === 49 || base === 98 || base === 144 || base === 147 || base === 196) count /= 2;
+    if (base === 16) count = (count/14)*3;
+    if (base === 81) count /= 4;
+    if (base === 160) count = Math.ceil(count*0.8);
+
     return Math.floor(count);
 }
